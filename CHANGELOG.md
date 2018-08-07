@@ -9,6 +9,8 @@
         - Only display last 6 months of reports on around page by default #2098
         - Always show all reports by default on /my.
         - Much less reliance on input placeholders, for better accessibility #2180
+        - “Report another problem here” button on report confirmation page #2198
+        - Button in nav bar now makes it easier to report again in the same location #2195
     - Admin improvements:
         - Mandatory defect type selection if defect raised.
         - Send login email button on user edit page #2041
@@ -30,6 +32,7 @@
         - Hide password help field along with other similar. #2185
         - Allow questionnaire link to be revisited in quick succession. #2123
         - Update Google Maps directions link.
+        - Fix inspector pin dragging. #2073.
     - Open311 improvements:
         - CLOSED status maps to 'closed' state if extended statuses are enabled.
         - Don't generate template comment text on move between fixed states.

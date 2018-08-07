@@ -16,7 +16,7 @@ var defaults = {
     },
     format_class: OpenLayers.Format.GML.v3.MultiCurveFix,
     asset_type: 'spot',
-    max_resolution: 2.388657133579254,
+    max_resolution: 4.777314267158508,
     min_resolution: 0.5971642833948135,
     asset_id_field: 'central_as',
     attributes: {
@@ -173,10 +173,15 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
     actions: {
         found: function(layer, feature) {
             fixmystreet.body_overrides.allow_send(layer.fixmystreet.body);
+            fixmystreet.body_overrides.remove_only_send();
             if (fixmystreet.assets.selectedFeature()) {
                 hide_responsibility_errors();
                 enable_report_form();
             } else if (OpenLayers.Util.indexOf(bucks_types, feature.attributes.feature_ty) != -1) {
+                var cat = $('select#form_category').val();
+                if (cat === 'Flytipping') {
+                    fixmystreet.body_overrides.only_send(layer.fixmystreet.body);
+                }
                 hide_responsibility_errors();
                 enable_report_form();
             } else if (is_only_body(layer.fixmystreet.body)) {
@@ -192,6 +197,7 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
             // probably a field or something. Show an error to that effect,
             // unless an asset is selected.
             fixmystreet.body_overrides.do_not_send(layer.fixmystreet.body);
+            fixmystreet.body_overrides.remove_only_send();
             if (fixmystreet.assets.selectedFeature()) {
                 fixmystreet.body_overrides.allow_send(layer.fixmystreet.body);
                 hide_responsibility_errors();
