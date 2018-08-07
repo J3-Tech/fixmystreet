@@ -148,7 +148,7 @@ sub update_comments {
                 # not the same as the external_id
                 if ( $customer_reference ) {
                     $p->set_extra_metadata( customer_reference => $customer_reference );
-                )
+                }
 
                 $open311->add_media($request->{media_url}, $comment)
                     if $request->{media_url};
